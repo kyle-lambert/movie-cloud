@@ -1,0 +1,77 @@
+@import "./resets";
+@import "./variables";
+@import "./typography";
+
+.loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 8rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @media (min-width: $breakpoint-laptop-m) {
+    bottom: 0;
+    left: 9rem;
+  }
+
+  &-spinner {
+    padding: 2.6rem;
+
+    @media (min-width: $breakpoint-laptop-m) {
+      padding: 3.6rem;
+    }
+  }
+}
+
+.error {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 8rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &-inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2.6rem;
+
+    @media (min-width: $breakpoint-laptop-m) {
+      padding: 3.6rem;
+    }
+  }
+
+  &-logo {
+    margin-bottom: 2.6rem;
+    &-img {
+      height: 5rem;
+    }
+  }
+
+  &-text {
+    color: $text-secondary;
+    text-align: center;
+    word-break: break-word;
+  }
+
+  @media (min-width: $breakpoint-laptop-m) {
+    bottom: 0;
+    left: 9rem;
+  }
+}
+
+.app {
+  padding-bottom: 8rem;
+
+  @media (min-width: $breakpoint-laptop-m) {
+    padding-bottom: 0;
+    padding-left: 9rem;
+  }
+}

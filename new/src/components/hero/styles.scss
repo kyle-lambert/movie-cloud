@@ -1,0 +1,124 @@
+@import "../../styles/variables";
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  background-color: $primary-dark;
+
+  @media (min-width: $breakpoint-laptop-m) {
+    position: relative;
+    display: block;
+    height: 0;
+    padding-bottom: 45%;
+  }
+
+  @media (min-width: $breakpoint-laptop-l) {
+    padding-bottom: 40%;
+  }
+}
+
+.hero-info {
+  padding: 2.6rem;
+
+  @media (min-width: $breakpoint-laptop-m) {
+    padding: 0 3.6rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    height: 100%;
+    width: 60%;
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+  }
+  @media (min-width: $breakpoint-laptop-l) {
+    width: 50%;
+  }
+
+  &-head {
+    margin-bottom: 1.8rem;
+  }
+
+  &-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-top: 0.8rem;
+  }
+
+  &-rating {
+    margin-right: 2rem;
+  }
+
+  &-span {
+    color: $text-secondary;
+    font-size: 1.5rem;
+    font-weight: 300;
+    margin-right: 2rem;
+    line-height: 1.8;
+  }
+
+  &-overview {
+    display: none;
+
+    @media (min-width: $breakpoint-mobile-l) {
+      display: block;
+      margin-top: 1.6rem;
+    }
+    @media (min-width: $breakpoint-laptop-m) {
+      width: 90%;
+    }
+  }
+}
+
+.hero-backdrop {
+  position: relative;
+  height: 30rem;
+  background-color: inherit;
+
+  @media (min-width: $breakpoint-mobile-l) {
+    height: 35rem;
+  }
+
+  @media (min-width: $breakpoint-tablet) {
+    height: 40rem;
+  }
+
+  @media (min-width: $breakpoint-laptop-m) {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 75%;
+  }
+
+  &-img {
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    max-width: none;
+    object-fit: cover;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -1px;
+    height: 60%;
+    z-index: 1000;
+    background: linear-gradient(0deg, $primary-dark 0%, transparent 100%);
+
+    @media (min-width: $breakpoint-laptop-m) {
+      top: 0;
+      bottom: 0;
+      left: -1px;
+      right: unset;
+      height: 100%;
+      width: 90%;
+      background: linear-gradient(90deg, $primary-dark 0%, transparent 100%);
+    }
+  }
+}
