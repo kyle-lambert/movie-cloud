@@ -16,7 +16,9 @@ export const Sidebar = () => {
         <ul className="sidebar-list">
           <li className="sidebar-item">
             <NavLink
-              className="sidebar-link"
+              className={({ isActive }) =>
+                isActive ? "sidebar-link sidebar-link--active" : "sidebar-link"
+              }
               to="/"
             >
               <HomeIcon />
@@ -24,7 +26,9 @@ export const Sidebar = () => {
           </li>
           <li className="sidebar-item">
             <NavLink
-              className="sidebar-link"
+              className={({ isActive }) =>
+                isActive ? "sidebar-link sidebar-link--active" : "sidebar-link"
+              }
               to="/movies"
             >
               <MoviesIcon />
@@ -32,7 +36,9 @@ export const Sidebar = () => {
           </li>
           <li className="sidebar-item">
             <NavLink
-              className="sidebar-link"
+              className={({ isActive }) =>
+                isActive ? "sidebar-link sidebar-link--active" : "sidebar-link"
+              }
               to="/tv-shows"
             >
               <TvShowIcon />
@@ -40,7 +46,9 @@ export const Sidebar = () => {
           </li>
           <li className="sidebar-item">
             <NavLink
-              className="sidebar-link"
+              className={({ isActive }) =>
+                isActive ? "sidebar-link sidebar-link--active" : "sidebar-link"
+              }
               to="/search"
             >
               <SearchIcon />
