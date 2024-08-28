@@ -1,65 +1,50 @@
-# MovieCloud
+# React + TypeScript + Vite
 
-A modern and user-friendly website to browse your favorite Movies, TV Shows, and Actors.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-## Introduction
-### Screenshots
+Currently, two official plugins are available:
 
-![movies](./src/assets/images/movies.jpg)
-![movie-detail](./src/assets/images/movie-detail.jpg)
-![search](./src/assets/images/search.jpg)
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-### Goals
+## Expanding the ESLint configuration
 
-I wanted to create a website that would:
+If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
 
-- Be a great addition for my portfolio.
-- Challenge me to step outside the technology scope of my previous projects and learn the technologies would most appropriate for a website like this.
-- Deliver a beautiful modern design with great User Experience.
+- Configure the top-level `parserOptions` property like this:
 
-### Challenges
-
-Although this website may seem simple and straight-forward at a glance, there is some complex logic under the hood to ensure vistors have the absolute best User Experience possible. During the build process I've learnt and gain experience in:
-
-- Lifecycle of a React Component and importance of each lifecycle method.
-- React design patterns (HOC, Render Props etc).
-- Effectively managing and maintaining Redux application state. Separating actions and using multiple reducers for better readibility and more predictable logic.
-- Single page application routing with React Router Library.
-- Guarding API response data to test JSON shape before injecting into application.
-- Experimenting with different folder structures and understanding the pros and cons of each.
-- Displaying loading and error states for enhanded User Experience.
-- Creating smooth and seamless animations with Framer Motion.
-- Responsive Design with SCSS media queries.
-
-## Getting Started
-
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
-
-### Installing
-
-1. Clone the repository
-
-```
-git clone git@github.com:kylelambert001/movie-cloud.git
+```js
+export default tseslint.config({
+  languageOptions: {
+    // other options...
+    parserOptions: {
+      project: ['./tsconfig.node.json', './tsconfig.app.json'],
+      tsconfigRootDir: import.meta.dirname,
+    },
+  },
+})
 ```
 
-2. Install project dependencies
+- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
+- Optionally add `...tseslint.configs.stylisticTypeChecked`
+- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
 
+```js
+// eslint.config.js
+import react from 'eslint-plugin-react'
+
+export default tseslint.config({
+  // Set the react version
+  settings: { react: { version: '18.3' } },
+  plugins: {
+    // Add the react plugin
+    react,
+  },
+  rules: {
+    // other rules...
+    // Enable its recommended rules
+    ...react.configs.recommended.rules,
+    ...react.configs['jsx-runtime'].rules,
+  },
+})
 ```
-npm install
-```
-
-3. Start the server
-
-```
-npm run start
-```
-
-## Technologies
-
-Project is created with:
-
-- [React](https://reactjs.org/) - Framework
-- [Redux](https://redux.js.org/) - State Management
-- [Sass](https://sass-lang.com/) - CSS Preprocessor
-- [Framer Motion](https://www.framer.com/motion/) - Animation Library
