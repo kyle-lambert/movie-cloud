@@ -30,7 +30,7 @@ export const getTvShowsAiringTodayQueryOptions = queryOptions({
   queryKey: ["getTvShowsAiringToday"],
   queryFn: async ({ signal }) => {
     zGetTvShowsResponse.parse(
-      await TMDB("/3/tv/airing_today", {
+      await TMDB("tv/airing_today", {
         signal,
       })
     );
@@ -42,7 +42,7 @@ export const getTvShowsOnTheAirQueryOptions = queryOptions({
   queryKey: ["getTvShowsOnTheAir"],
   queryFn: async ({ signal }) => {
     zGetTvShowsResponse.parse(
-      await TMDB("/3/tv/on_the_air", {
+      await TMDB("tv/on_the_air", {
         signal,
       })
     );
@@ -54,7 +54,7 @@ export const getTvShowsPopularQueryOptions = queryOptions({
   queryKey: ["getTvShowsPopular"],
   queryFn: async ({ signal }) => {
     zGetTvShowsResponse.parse(
-      await TMDB("/3/tv/popular", {
+      await TMDB("tv/popular", {
         signal,
       })
     );
@@ -66,7 +66,7 @@ export const getTvShowsTopRatedQueryOptions = queryOptions({
   queryKey: ["getTvShowsTopRated"],
   queryFn: async ({ signal }) => {
     zGetTvShowsResponse.parse(
-      await TMDB("/3/tv/top_rated", {
+      await TMDB("tv/top_rated", {
         signal,
       })
     );

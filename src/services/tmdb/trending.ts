@@ -15,7 +15,7 @@ export const getTrendingMoviesQueryOptions = queryOptions({
   queryKey: ["getTrendingMovies"],
   queryFn: async ({ signal }) => {
     return zGetTrendingMoviesResponse.parse(
-      await TMDB("/3/trending/movie/day", {
+      await TMDB("trending/movie/day", {
         signal,
       })
     );
@@ -33,7 +33,7 @@ export const getTrendingTvShowsQueryOptions = queryOptions({
   queryKey: ["getTrendingTvShows"],
   queryFn: async ({ signal }) => {
     return zGetTrendingTvShowsResponse.parse(
-      await TMDB("/3/trending/tv/day", {
+      await TMDB("trending/tv/day", {
         signal,
       })
     );

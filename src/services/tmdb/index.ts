@@ -29,18 +29,15 @@ export const genres = [
 ] as const;
 
 export async function TMDB(path: string, options: Omit<RequestInit, "header">) {
-  const url = new URL(path, "https://api.themoviedb.org");
+  const url = new URL(
+    ["api/tmdb/3", path].join("/"),
+    import.meta.env.VITE_BASE_URL
+  );
+  console.log(`[tmdb]: Requesting ${url.toString()}`);
 
-  const response = await fetch(url, {
-    headers: {
-      Authorization: `Bearer ${import.meta.env.VITE_TMDB_ACCESS_TOKEN}`,
-      "Content-Type": "application/json",
-    },
-    ...options,
-  });
-
+  const response = await fetch(url, options);
   if (!response.ok) {
-    throw new Error(`[TMDB]: Request failed with status ${response.status}`);
+    throw new Error(`[tmdb]: Request failed with status ${response.status}`);
   }
 
   return await response.json();

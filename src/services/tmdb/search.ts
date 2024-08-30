@@ -12,7 +12,7 @@ export const getSearchQueryOptions = (query: string, page: number = 1) => {
     queryKey: ["getSearch", query, page],
     queryFn: async ({ signal }) => {
       // zGetSearchResponse.parse(
-      await TMDB(`/3/search/multi?query=${searchQuery}&page=${page}`, {
+      await TMDB(`search/multi?query=${searchQuery}&page=${page}`, {
         signal,
       });
       // );

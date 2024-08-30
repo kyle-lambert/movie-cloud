@@ -30,7 +30,7 @@ export const getMoviesNowPlayingQueryOptions = queryOptions({
   queryKey: ["getMoviesNowPlaying"],
   queryFn: async ({ signal }) => {
     return zGetMoviesResponse.parse(
-      await TMDB("/3/movie/now_playing", {
+      await TMDB("movie/now_playing", {
         signal,
       })
     );
@@ -42,7 +42,7 @@ export const getMoviesPopularQueryOptions = queryOptions({
   queryKey: ["getMoviesPopular"],
   queryFn: async ({ signal }) => {
     return zGetMoviesResponse.parse(
-      await TMDB("/3/movie/popular", {
+      await TMDB("movie/popular", {
         signal,
       })
     );
@@ -54,7 +54,7 @@ export const getMoviesTopRatedQueryOptions = queryOptions({
   queryKey: ["getMoviesTopRated"],
   queryFn: async ({ signal }) => {
     return zGetMoviesResponse.parse(
-      await TMDB("/3/movie/top_rated", {
+      await TMDB("movie/top_rated", {
         signal,
       })
     );
@@ -66,7 +66,7 @@ export const getMoviesUpcomingQueryOptions = queryOptions({
   queryKey: ["getMoviesUpcoming"],
   queryFn: async ({ signal }) => {
     return zGetMoviesResponse.parse(
-      await TMDB("/3/movie/upcoming", {
+      await TMDB("movie/upcoming", {
         signal,
       })
     );

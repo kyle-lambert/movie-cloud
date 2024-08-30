@@ -11,7 +11,7 @@ export const getMovieDetailQueryOptions = (movie_id: string) =>
     queryKey: ["getMovieDetail", movie_id],
     queryFn: async ({ signal }) => {
       // zGetMovieDetailResponse.parse(
-      await TMDB(`/3/movie/${movie_id}?append_to_response=credits,similar`, {
+      await TMDB(`movie/${movie_id}?append_to_response=credits,similar`, {
         signal,
       });
       // );
@@ -28,7 +28,7 @@ export const getTvShowDetailQueryOptions = (series_id: string) =>
     queryFn: async ({ signal }) => {
       // zGetTvShowDetailResponse.parse(
       await TMDB(
-        `/3/tv/${series_id}?append_to_response=credits,episode_groups,similar`,
+        `tv/${series_id}?append_to_response=credits,episode_groups,similar`,
         {
           signal,
         }
@@ -47,7 +47,7 @@ export const getPersonDetailQueryOptions = (person_id: string) =>
     queryFn: async ({ signal }) => {
       // zGetPersonDetailResponse.parse(
       await TMDB(
-        `/3/person/${person_id}?append_to_response=movie_credits,tv_credits`,
+        `person/${person_id}?append_to_response=movie_credits,tv_credits`,
         {
           signal,
         }
