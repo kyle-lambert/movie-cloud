@@ -5,9 +5,12 @@ import vercel from "vite-plugin-vercel";
 import path from "path";
 
 export default defineConfig({
-  plugins: [react(), vercel()],
+  plugins: [react()],
   server: {
     port: process.env.PORT as unknown as number,
+  },
+  define: {
+    VITE_BASE_URL: process.env.VITE_BASE_URL,
   },
   resolve: {
     alias: {
