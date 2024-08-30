@@ -8,16 +8,16 @@ const tmdbProxy = createProxyMiddleware({
     "^/api/tmdb": "",
   },
   on: {
-    proxyReq: (proxyReq, req, res) => {
+    proxyReq: (proxyReq) => {
       proxyReq.setHeader(
         "Authorization",
         `Bearer ${process.env.TMDB_ACCESS_TOKEN}`
       );
     },
-    proxyRes: (proxyRes, req, res) => {
+    proxyRes: (proxyRes) => {
       proxyRes.headers["access-control-allow-origin"] = "*";
     },
-    error: (err, req, res) => {
+    error: (err) => {
       console.log("[tmdb-proxy]: An error occured", err);
     },
   },
