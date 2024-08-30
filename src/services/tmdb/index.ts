@@ -28,7 +28,10 @@ export const genres = [
   { id: 10768, name: "War & Politics" },
 ] as const;
 
-export async function TMDB(path: string, options: Omit<RequestInit, "header">) {
+export async function TMDB(
+  path: string,
+  options: Omit<RequestInit, "header"> = {}
+) {
   const url = new URL(
     ["api/tmdb/3", path].join("/"),
     import.meta.env.VITE_BASE_URL
