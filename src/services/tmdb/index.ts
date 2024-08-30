@@ -32,10 +32,7 @@ export async function TMDB(
   path: string,
   options: Omit<RequestInit, "header"> = {}
 ) {
-  const url = new URL(
-    ["api/tmdb/3", path].join("/"),
-    import.meta.env.VITE_BASE_URL
-  );
+  const url = new URL(`${import.meta.env.VITE_BASE_URL}/api/tmdb/3/${path}`);
   console.log(`[tmdb]: Requesting ${url.toString()}`);
 
   const response = await fetch(url, options);
