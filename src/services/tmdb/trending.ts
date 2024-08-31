@@ -10,12 +10,14 @@ export const zGetTrendingMoviesResponse = z
   })
   .transform((data) => data.results);
 
+export type TrendingMoviesData = z.infer<typeof zGetTrendingMoviesResponse>;
+
 //https://api.themoviedb.org/3/trending/movie/day
 export const getTrendingMoviesQueryOptions = queryOptions({
   queryKey: ["getTrendingMovies"],
   queryFn: async ({ signal }) => {
     return zGetTrendingMoviesResponse.parse(
-      await TMDB("trending/movie/day", {
+      await TMDB("/trending/movie/day", {
         signal,
       })
     );
@@ -28,12 +30,14 @@ export const zGetTrendingTvShowsResponse = z
   })
   .transform((data) => data.results);
 
+export type TrendingTvShowData = z.infer<typeof zGetTrendingTvShowsResponse>;
+
 //https://api.themoviedb.org/3/trending/tv/day
 export const getTrendingTvShowsQueryOptions = queryOptions({
   queryKey: ["getTrendingTvShows"],
   queryFn: async ({ signal }) => {
     return zGetTrendingTvShowsResponse.parse(
-      await TMDB("trending/tv/day", {
+      await TMDB("/trending/tv/day", {
         signal,
       })
     );

@@ -29,16 +29,12 @@ export const genres = [
 ] as const;
 
 export async function TMDB(
-  path: string,
+  path: `/${string}`,
   options: Omit<RequestInit, "header"> = {}
 ) {
-  const url = `/api/tmdb/3/${path}`;
-  console.log(`[tmdb]: Requesting ${url.toString()}`);
-
-  const response = await fetch(url, options);
+  const response = await fetch(`/api/tmdb/3/${path}`, options);
   if (!response.ok) {
     throw new Error(`[tmdb]: Request failed with status ${response.status}`);
   }
-
   return await response.json();
 }

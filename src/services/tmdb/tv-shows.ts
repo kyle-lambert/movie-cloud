@@ -25,12 +25,14 @@ export const zGetTvShowsResponse = z
   })
   .transform((data) => data.results);
 
+export type TvShowsData = z.infer<typeof zGetTvShowsResponse>;
+
 // https://api.themoviedb.org/3/tv/airing_today
 export const getTvShowsAiringTodayQueryOptions = queryOptions({
   queryKey: ["getTvShowsAiringToday"],
   queryFn: async ({ signal }) => {
     zGetTvShowsResponse.parse(
-      await TMDB("tv/airing_today", {
+      await TMDB("/tv/airing_today", {
         signal,
       })
     );
@@ -42,7 +44,7 @@ export const getTvShowsOnTheAirQueryOptions = queryOptions({
   queryKey: ["getTvShowsOnTheAir"],
   queryFn: async ({ signal }) => {
     zGetTvShowsResponse.parse(
-      await TMDB("tv/on_the_air", {
+      await TMDB("/tv/on_the_air", {
         signal,
       })
     );
@@ -54,7 +56,7 @@ export const getTvShowsPopularQueryOptions = queryOptions({
   queryKey: ["getTvShowsPopular"],
   queryFn: async ({ signal }) => {
     zGetTvShowsResponse.parse(
-      await TMDB("tv/popular", {
+      await TMDB("/tv/popular", {
         signal,
       })
     );
@@ -66,7 +68,7 @@ export const getTvShowsTopRatedQueryOptions = queryOptions({
   queryKey: ["getTvShowsTopRated"],
   queryFn: async ({ signal }) => {
     zGetTvShowsResponse.parse(
-      await TMDB("tv/top_rated", {
+      await TMDB("/tv/top_rated", {
         signal,
       })
     );

@@ -1,0 +1,88 @@
+@import "../../styles/variables";
+
+.carousel {
+  position: relative;
+  width: 100%;
+
+  &-prev,
+  &-next {
+    display: none;
+    transition: opacity 150ms ease-out;
+
+    &:hover {
+      opacity: 0.8;
+    }
+
+    @media (min-width: $breakpoint-laptop-m) {
+      display: block;
+      position: absolute;
+      width: 4rem;
+      background-color: $primary-dark;
+      color: inherit;
+      outline: none;
+      border: none;
+      cursor: pointer;
+      color: inherit;
+      z-index: 5000;
+      opacity: 0.5;
+    }
+  }
+
+  &-prev {
+    display: none;
+    top: 0;
+    left: 36px;
+    bottom: calc(50px + 1rem);
+  }
+
+  &-next {
+    top: 0;
+    right: 36px;
+    bottom: calc(50px + 1rem);
+  }
+
+  &-items {
+    position: relative;
+    width: 100%;
+    display: flex;
+    overflow: hidden;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  &-card {
+    flex-shrink: 0;
+    flex-grow: 0;
+    scroll-snap-align: start;
+    margin-right: 8px;
+    width: 100%;
+
+    @media (min-width: $breakpoint-mobile-m) {
+      width: calc(0.5 * (100% - 8px));
+    }
+
+    @media (min-width: $breakpoint-tablet-s) {
+      width: calc(0.33334 * (100% - 16px));
+    }
+
+    @media (min-width: $breakpoint-tablet-l) {
+      width: calc(0.25 * (100% - 24px));
+    }
+
+    @media (min-width: $breakpoint-laptop-l) {
+      width: calc(0.2 * (100% - 32px));
+    }
+
+    @media (min-width: $breakpoint-desktop) {
+      width: calc(0.16667 * (100% - 40px));
+    }
+
+    @media (min-width: $breakpoint-desktop-l) {
+      width: calc(0.14285 * (100% - 48px));
+    }
+  }
+}

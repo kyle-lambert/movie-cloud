@@ -5,6 +5,7 @@ import { Movies } from "@/routes/movies";
 import { Root } from "@/routes/root";
 import { Search } from "@/routes/search";
 import { TvShows } from "@/routes/tv-shows";
+import { Single } from "@/routes/single";
 
 function App() {
   console.log(import.meta.env.VITE_BASE_URL);
@@ -27,6 +28,10 @@ function App() {
         <Route
           path="/search"
           Component={Search}
+        />
+        <Route
+          path="/:mediaType/:id"
+          Component={Single}
         />
       </Routes>
     </div>

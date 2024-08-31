@@ -6,12 +6,18 @@ import { z } from "zod";
 export const zMovieDetail = z.object({});
 export const zGetMovieDetailResponse = z.object({});
 
-export const getMovieDetailQueryOptions = (movie_id: string) =>
+export type MovieDetailsData = z.infer<typeof zGetMovieDetailResponse>;
+
+export const getMovieDetailQueryOptions = (
+  movie_id: string,
+  enabled: boolean = true
+) =>
   queryOptions({
+    enabled,
     queryKey: ["getMovieDetail", movie_id],
     queryFn: async ({ signal }) => {
       // zGetMovieDetailResponse.parse(
-      await TMDB(`movie/${movie_id}?append_to_response=credits,similar`, {
+      await TMDB(`/movie/${movie_id}?append_to_response=credits,similar`, {
         signal,
       });
       // );
@@ -22,13 +28,19 @@ export const getMovieDetailQueryOptions = (movie_id: string) =>
 export const zTvShowDetail = z.object({});
 export const zGetTvShowDetailResponse = z.object({});
 
-export const getTvShowDetailQueryOptions = (series_id: string) =>
+export type TvShowDetailData = z.infer<typeof zGetTvShowDetailResponse>;
+
+export const getTvShowDetailQueryOptions = (
+  series_id: string,
+  enabled: boolean = true
+) =>
   queryOptions({
+    enabled,
     queryKey: ["getTvShowDetail", series_id],
     queryFn: async ({ signal }) => {
       // zGetTvShowDetailResponse.parse(
       await TMDB(
-        `tv/${series_id}?append_to_response=credits,episode_groups,similar`,
+        `/tv/${series_id}?append_to_response=credits,episode_groups,similar`,
         {
           signal,
         }
@@ -41,13 +53,17 @@ export const getTvShowDetailQueryOptions = (series_id: string) =>
 export const zPersonDetail = z.object({});
 export const zGetPersonDetailResponse = z.object({});
 
-export const getPersonDetailQueryOptions = (person_id: string) =>
+export const getPersonDetailQueryOptions = (
+  person_id: string,
+  enabled: boolean = true
+) =>
   queryOptions({
+    enabled,
     queryKey: ["getPersonDetail", person_id],
     queryFn: async ({ signal }) => {
       // zGetPersonDetailResponse.parse(
       await TMDB(
-        `person/${person_id}?append_to_response=movie_credits,tv_credits`,
+        `/person/${person_id}?append_to_response=movie_credits,tv_credits`,
         {
           signal,
         }

@@ -1,6 +1,19 @@
 import { PageLayout } from "@/components/page-layout";
+import {
+  getMovieDetailQueryOptions,
+  getTvShowDetailQueryOptions,
+} from "@/services/tmdb/details";
+import { useQuery } from "@tanstack/react-query";
+import { redirect, useParams } from "react-router-dom";
 
-export const Details = () => {
+type Params = {
+  mediaType: "movie" | "tv";
+  id: string;
+};
+
+export const Single = () => {
+  const { mediaType, id = "" } = useParams<Params>();
+
   return (
     <PageLayout>
       {/* {mediaType === "movie" && (
