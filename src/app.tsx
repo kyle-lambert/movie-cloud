@@ -8,7 +8,6 @@ import { TvShows } from "@/routes/tv-shows";
 import { Single } from "@/routes/single";
 
 function App() {
-  console.log(import.meta.env.VITE_BASE_URL);
   return (
     <div className="app">
       <Sidebar />

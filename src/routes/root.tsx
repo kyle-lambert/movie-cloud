@@ -15,8 +15,8 @@ export const Root = () => {
     queries: [getTrendingMoviesQueryOptions, getTrendingTvShowsQueryOptions],
   });
 
-  const isLoading = trendingMovies.isLoading && trendingMovies.isLoading;
-  const isError = trendingMovies.isError || trendingMovies.isError;
+  const isLoading = trendingMovies.isLoading || trendingTvShows.isLoading;
+  const isError = trendingMovies.isError || trendingTvShows.isError;
 
   if (isLoading) {
     return <Loading />;
@@ -30,7 +30,7 @@ export const Root = () => {
 
   const heroData =
     trendingMovieData && trendingMovieData.length > 0
-      ? trendingMovieData[4]
+      ? trendingMovieData[0]
       : undefined;
 
   return (

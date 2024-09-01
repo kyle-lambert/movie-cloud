@@ -42,7 +42,7 @@ export const MovieCard = ({ data }: MovieCardProps) => {
         </div>
         <div className="card-line card-line-two">
           <StarRating rating={vote_average} />
-          <span>{vote_average}</span>
+          <span>{Number(vote_average / 2).toFixed(1)}</span>
         </div>
       </div>
     </div>
@@ -83,7 +83,7 @@ export const TvShowCard = ({ data }: TvShowCardProps) => {
         </div>
         <div className="card-line card-line-two">
           <StarRating rating={vote_average} />
-          <span>{vote_average}</span>
+          <span>{Number(vote_average / 2).toFixed(1)}</span>
         </div>
       </div>
     </div>
